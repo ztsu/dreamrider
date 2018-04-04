@@ -24,7 +24,9 @@ Function `init` returns a bunch of a functions connected with the state:
 - `subscribe` allows to subscribe for changes and receive the new state immediately after changes
 - `apply` intended to change the state
 
-There are a couple of methods to change the state. ...
+In previous example state has been initialized with with `0`.
+
+How to change the state. There are a couple of methods. ...
 
 Suppose there is a function changes the state. The function get current state and return new state.
 
@@ -72,7 +74,7 @@ const tryInc = ({applyOr}) => () => applyOr(incIfNot50, inc2)
 import React from "react"
 import ReactDOM from "react-dom"
 import {init} from "ztsu/smex"
-import {connect} from "ztsy/smex/react
+import {connect} from "ztsu/smex/react"
 
 const App = (apply) {
 	return ({state}) => (
