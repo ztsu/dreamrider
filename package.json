@@ -1,5 +1,5 @@
 {
-  "name": "smex",
+  "name": "dreamrider",
   "description": "State management experiment",
   "version": "0.1.0",
   "main": "index.js",
@@ -26,14 +26,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ztsu/smex.git"
+    "url": "https://github.com/ztsu/dreamrider.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/ztsu/smex/issues"
+    "url": "https://github.com/ztsu/dreamrider/issues"
   },
-  "homepage": "https://github.com/ztsu/smex",
+  "homepage": "https://github.com/ztsu/dreamrider",
   "jest": {
     "testRegex": "(/test/.*\\.js)$"
   }

@@ -1,20 +1,20 @@
-SMEX
-====
+DreamRider
+==========
 
 The simpliest state management tool. No actions, reducers, mutators, promises, sagas, middlewares, etc. Just functions which changes the state.
 
 ## Usage
 
 ```
-$ npm install ztsu/smex
+$ npm install ztsu/dreamrider
 ```
 
 ### Simple usage
 
-For use SMEX import `init` from `ztsu/smex` package and use it for initialization of the state:
+For use DreamRider import `init` from `ztsu/dreamrider` package and use it for initialization of the state:
 
 ```javascript
-import {init} from "smex";
+import {init} from "dreamrider";
 
 const {apply, getState, subscribe} = init(0)
 ```
@@ -73,8 +73,8 @@ const tryInc = ({applyOr}) => () => applyOr(incIfNot50, inc2)
 ```javascript
 import React from "react"
 import ReactDOM from "react-dom"
-import {init} from "ztsu/smex"
-import {connect} from "ztsu/smex/react"
+import {init} from "ztsu/dreamrider"
+import {connect} from "ztsu/dreamrider/react"
 
 const App = (apply) {
 	return ({state}) => (
@@ -94,9 +94,9 @@ ReactDOM.render(
 )
 ```
 
-## Why SMEX?
+## Why DreamRider?
 
-SMEX isn't a framework for state management tools. SMEX has a simpliest conception and API.
+DreamRider isn't a framework for state management tools. DreamRider has a simpliest conception and API.
 
 ## Examples
 
