@@ -28,7 +28,7 @@ In previous example state has been initialized with with `0`.
 
 How to change the state. There are a couple of methods. ...
 
-Suppose there is a function changes the state. The function get current state and return new state.
+Suppose there is a function changes the state. The function get current state and return new state:
 
 ```javascript
 const inc = ({state}) => ({state: state + 1})
@@ -44,6 +44,12 @@ Also suppose there is another functions that changes the state too but asynchron
 
 ```javascript
 const incAsync = ({apply}) => () => setTimeout(() => apply(inc), 1000)
+```
+
+To change concrete state in this case likewise use `apply`:
+
+```javascript
+apply(incAsync)
 ```
 
 ### Composition
