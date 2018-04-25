@@ -37,13 +37,13 @@ const inc = ({state}) => ({state: state + 1})
 To change concrete state just apply the function to state with `apply`.
 
 ```javascript
-apply(inc)()
+apply(inc)
 ```
 
 Also suppose there is another functions that changes the state too but asynchronously:
 
 ```javascript
-const incAsync = () => ({apply}) => setTimeout(() => apply(inc), 1000)
+const incAsync = ({apply}) => () => setTimeout(() => apply(inc), 1000)
 ```
 
 ### Composition
@@ -63,11 +63,18 @@ There is a shorthand method `and` with the same purpose:
 const inc2 = ({and}) => and(inc, inc)
 ```
 
-There is `applyFor` (and shorthand `or`) for conditional composition:
+There is `applyOr` (and shorthand `or`) for conditional composition:
 
 ```javascript
 const tryInc = ({applyOr}) => () => applyOr(incIfNot50, inc2)
 ```
+
+or shorter:
+
+```javascript
+const tryInc = ({or}) => or(incIfNot50, inc2)
+```
+
 ### Usage with React
 
 ```javascript
@@ -79,9 +86,9 @@ import {connect} from "ztsu/dreamrider/react"
 const App = (apply) {
 	return ({state}) => (
 		<>
-			<button onClick={apply(dec)}>-</button>
+			<button onClick={() => apply(dec)}>-</button>
 			<span>{state}</span>
-			<button onClick={apply(inc)}>+</button>
+			<button onClick={() => apply(inc)}>+</button>
 		</>
 	)
 }

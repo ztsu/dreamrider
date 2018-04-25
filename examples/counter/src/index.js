@@ -45,9 +45,9 @@ function App(apply) {
 
 const {apply, subscribe, getState} = init({counter: 42, loading: 0})
 
-const log = (func) => () => (...args) => console.log(...args) || func(...args);
-
 ReactDOM.render(
-	React.createElement(connect({subscribe, state: getState})(App(log(apply)))),
+	React.createElement(
+		connect({subscribe, state: getState})(App((...args) => () => apply(...args)))
+	),
 	document.getElementById("root")
 )
