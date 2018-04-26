@@ -66,7 +66,7 @@ const inc2Async = ({apply}) => () => apply(incAsync, incAsync)
 There is a shorthand method `and` with the same purpose:
 
 ```javascript
-const inc2 = ({and}) => and(inc, inc)
+const inc2Async = ({and}) => and(inc, inc)
 ```
 
 There is `applyOr` (and shorthand `or`) for conditional composition:
