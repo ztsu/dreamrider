@@ -1,4 +1,4 @@
-export function and(update, state, react, {payload, error}) {
+export function and(update, state, react, {error}) {
 	return (...actions) => {
 		if (actions.length > 0) {
 			const action = actions.shift()
@@ -6,7 +6,7 @@ export function and(update, state, react, {payload, error}) {
 
 			const apply = (...args) => {
 				if (args.length + actions.length > 0) {
-					and(update, state, react, {payload, error})(...args, ...actions)
+					and(update, state, react, {error})(...args, ...actions)
 				}
 			}
 
@@ -15,7 +15,6 @@ export function and(update, state, react, {payload, error}) {
 					state: state(),
 					apply,
 					and: (...args) => () => apply(...args),
-					payload,
 					error
 				})
 
@@ -29,7 +28,7 @@ export function and(update, state, react, {payload, error}) {
 			}
 
 			if (actions.length > 0) {
-				and(update, state, react, {payload: result.payload, error: result.error})(...actions)
+				and(update, state, react, {error: result.error})(...actions)
 			}
 		}
 	}
@@ -58,7 +57,7 @@ export function or(update, state, react) {
 					react(state())
 
 				} else if (actions.length > 0) {
-					or(update, state, react, {payload: result.payload, error: result.error})(...actions)
+					or(update, state, react, {error: result.error})(...actions)
 				}
 			}
 		}
