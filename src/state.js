@@ -70,7 +70,7 @@ export function init(value) {
 	const subscribers = []
 
 	return {
-		apply: and(newState => state = newState, () => state, state => subscribers.forEach(f => f(state)), {}),
+		apply: and(newState => state = newState, () => state, state => subscribers.forEach(fn => fn(state)), {}),
 		applyOr: (...actions) => () => or(newState => state = newState, () => state, state => subscribers.forEach(f => f(state)))(...actions),
 		subscribe: f => subscribers.push(f),
 		getState: () => state
