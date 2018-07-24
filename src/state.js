@@ -48,7 +48,7 @@ export function init(value) {
 	const subscribers = []
 
 	return {
-		apply: and(newState => state = newState, () => state, state => subscribers.forEach(fn => fn(state)), {}),
+		apply: (fn) => and(newState => state = newState, () => state, state => subscribers.forEach(fn => fn(state)), {})(fn),
 		subscribe: f => subscribers.push(f),
 		getState: () => state
 	}

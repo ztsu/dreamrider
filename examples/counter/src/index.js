@@ -76,4 +76,4 @@ const test7 = ({and}) => and(first, fail, second) // !
 const test8 = ({and}) => and(fail, second) // !
 const test9 = ({and}) => and(fail)
 
-apply(test9)
+apply(test8)
