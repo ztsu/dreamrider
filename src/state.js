@@ -2,7 +2,6 @@ export function and(update, state, react, payload) {
 	return (...actions) => {
 		if (actions.length > 0) {
 			const action = actions.shift()
-			let result = {}
 
 			if (typeof action !== "function") {
 				throw new TypeError(action + " is not a function")
@@ -14,21 +13,23 @@ export function and(update, state, react, payload) {
 				}
 			}
 
-			result = action({
+			let result = action({
 				state: state(),
 				and: (...args) => () => apply(...args),
 				error: payload.error
 			})
 
 			if (typeof result == "function") {
-				result({apply})
+				result({apply: (fn) => apply(fn)})
 				return
 			}
 
-			if (result instanceof Error === false) {
-				update(result)
-				react(state())
+			if (result instanceof Error === true) {
+				return
 			}
+
+			update(result)
+				react(state())
 
 			if (actions.length > 0) {
 				const payload = {}
