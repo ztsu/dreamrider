@@ -7,20 +7,21 @@ export function and(update, state, react, payload) {
 				throw new TypeError(action + " is not a function")
 			}
 
-			const apply = (...args) => {
+			const apply = (fn, ...args) => {
 				if (args.length + actions.length > 0) {
-					and(update, state, react, payload)(...args, ...actions)
+					fn(update, state, react, payload)(...args, ...actions)
 				}
 			}
 
 			let result = action({
 				state: state(),
-				and: (...args) => () => apply(...args),
+				and: (...args) => () => apply(and, ...args),
+				or: (...args) => () => apply(or, ...args),
 				error: payload.error
 			})
 
 			if (typeof result == "function") {
-				result({apply: (fn) => apply(fn)})
+				result({apply: (fn) => apply(and, fn)})
 				return
 			}
 
@@ -29,7 +30,7 @@ export function and(update, state, react, payload) {
 			}
 
 			update(result)
-				react(state())
+			react(state())
 
 			if (actions.length > 0) {
 				const payload = {}

@@ -66,14 +66,25 @@ const recover = ({state, error}) => { console.error("recover", state, error); re
 const delayedWait = () => ({apply})=> { setTimeout(() => apply(wait), 1000) }
 const wait = ({state}) => { console.log("wait"); return state }
 
-const test1 = first
-const test2 = asyncFirst
-const test3 = ({and}) => and(first, second, third)
-const test4 = ({and}) => and(asyncFirst, second, third)
-const test5 = ({and}) => and(first, asyncSecond)
-const test6 = ({and}) => and(asyncFirst, asyncSecond, third)
-const test7 = ({and}) => and(first, fail, second) // !
-const test8 = ({and}) => and(fail, second) // !
-const test9 = ({and}) => and(fail)
+const test3 = () => ({apply}) => apply(first, second)
 
-apply(test8)
+const test10 = ({and}) => and(first, second, third)
+const test11 = ({and}) => and(asyncFirst, second, third)
+const test12 = ({and}) => and(first, asyncSecond)
+const test13 = ({and}) => and(asyncFirst, asyncSecond, third)
+const test14 = ({and}) => and(first, fail, recover)
+const test15 = ({and}) => and(fail, second)
+const test16 = ({and}) => and(fail)
+const test17 = ({and}) => and(first, fail)
+
+const test20 = ({or}) => or(first, second, third)
+const test21 = ({or}) => or(fail, recover)
+const test22 = ({or}) => or(fail, fail)
+
+const test30 = ({and}) => and(test1, test1)
+const test31 = ({and}) => and(test2, test2)
+const test32 = ({and}) => and(test10, test10)
+
+const test40 = ({or}) => or(test17, recover)
+
+apply(test20)
