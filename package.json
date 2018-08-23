@@ -34,9 +34,7 @@
     "build": "npm run build:es",
     "build:es": "rollup src/state.js --file es/dreamrider.js --format es"
   },
-  "dependencies": {
-    "react": "^16.1.0"
-  },
+  "dependencies": {},
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
