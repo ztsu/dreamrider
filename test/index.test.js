@@ -1,4 +1,4 @@
-import {init} from "../src/state"
+const { init } = require("../");
 
 describe("init", () => {
     it("returns set of functions", () => {

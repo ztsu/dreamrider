@@ -45,7 +45,4 @@ function init(value) {
 	}
 }
 
-export {
-	and,
-	init
-}
+module.exports = { init, and };
