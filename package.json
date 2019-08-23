@@ -32,10 +32,17 @@
   "scripts": {
     "test": "jest --verbose",
     "build": "npm run build:es",
-    "build:es": "rollup src/state.js --file es/dreamrider.js --format es"
+    "build:es": "rollup src/state.js --file es/dreamrider.js --format es",
+    "size": "size-limit"
   },
+  "size-limit": [
+    {
+      "path": "es/dreamrider.js"
+    }
+  ],
   "dependencies": {},
   "devDependencies": {
+    "@size-limit/preset-small-lib": "^2.1.1",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-jest": "^21.2.0",
