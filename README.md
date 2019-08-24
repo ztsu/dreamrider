@@ -1,7 +1,7 @@
 Dreamrider
 ==========
 
-The simpliest state management tool. No actions, reducers, mutators, promises, sagas, middlewares, etc. Just functions which changes the state.
+The simpliest state management tool. No actions, reducers, events, mutators, sagas, middlewares, etc. Just functions which changes the state.
 
 ## Usage
 
