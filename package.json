@@ -19,7 +19,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@size-limit/preset-small-lib": "^2.1.1",
+    "@size-limit/preset-small-lib": "^8.1.0",
     "jest": "^25.0.0"
   },
   "jest": {
